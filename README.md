@@ -1,4 +1,4 @@
-# KenKen Solver
+# KenKen
 
 A Python project that implements an efficient solver for KenKen puzzles using Constraint Satisfaction Problems (CSP) algorithms from the book Artificial Intelligence: A Modern Approach (AIMA). The project was developed in Python 3.7
 
@@ -8,7 +8,7 @@ A Python project that implements an efficient solver for KenKen puzzles using Co
 - The top left corner of each cage has a "target number" and a math operation. The numbers you enter into a cage must combine (in any order) to produce the target number using the noted operation. If no operation is mentioned then the cage only has one cell/member and its value should be equal to the target number.
 
 ## How does the solver work?
-The solver gives the user the option to choose from a variety of search algorithms. The algorithms of interest for this project are:
+The solver allows the user to select from multiple search algorithms, which are implemented in the `csp.py` file from AIMA. The algorithms of interest for this project are:
 - [Backtracking (BT)](https://ktiml.mff.cuni.cz/~bartak/constraints/propagation.html#BT)
 - [Forward Checking (FC)](https://ktiml.mff.cuni.cz/~bartak/constraints/propagation.html#FC)
 - [Maintaining Arc Consistency (MAC)](https://ktiml.mff.cuni.cz/~bartak/constraints/propagation.html#LA)
