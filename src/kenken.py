@@ -48,7 +48,6 @@ class KenKen(csp.CSP):
         neighbors = {}
         for var in variables:
             # init neighbors that (may) participate in constraints
-            # meaning cells in same row, col, and cage
             neighbors_list = []
 
             # var's cage
@@ -76,12 +75,7 @@ class KenKen(csp.CSP):
         )
 
     def same_row_or_col(self, A, B) -> bool:
-        """Returns True if cells A and B are in the same row or column, False otherwise.
-        
-        Parameters:
-            A: The first cell to check.
-            B: The second cell to check.
-        """
+        """Returns True if cells A and B are in the same row or column, False otherwise."""
         if ((A-1) // self.size == (B-1) // self.size or 
             (A-1) % self.size == (B-1) % self.size):
             return True
@@ -105,12 +99,6 @@ class KenKen(csp.CSP):
     def kenken_constraint(self, A, a, B, b) -> bool:
         """Returns True if the assignment of value a to cell A and
         value b to cell B does not violate any KenKen constraints, False otherwise.
-        
-        Parameters:
-            A: The first cell to check.
-            a: The value assigned to cell A.
-            B: The second cell to check.
-            b: The value assigned to cell B.
         """
         self.constraint_checks += 1
         
@@ -128,13 +116,6 @@ class KenKen(csp.CSP):
     def cage_constraint(self, cage, A, a, B=None, b=None) -> bool:
         """Returns True if the constraints of given cage are being satisfied, False otherwise.
         If both cells A, B are provided we suppose that they are in the same cage, else not.
-        
-        Parameters:
-            cage: The tuple of cells in the cage being checked.
-            A: The first cell to check.
-            a: The value assigned to cell A.
-            B: The second cell to check.
-            b: The value assigned to cell B.
         """
         op, goal = self.cages[cage]
 
@@ -178,9 +159,6 @@ class KenKen(csp.CSP):
         """Solves the KenKen puzzle using the prefered CSP solving algorithm.
         Note that AIMA's implementation of MRV resolves ties randomly, so the 
         number of assignments made may vary each time.
-        
-        Returns:
-            A dictionary mapping cells to their assigned values.
         """
         if algorithm == 'BT':
             return csp.backtracking_search(self)
@@ -194,14 +172,9 @@ class KenKen(csp.CSP):
             return csp.backtracking_search(self, inference=csp.mac)
         else:
             raise ValueError(f'Invalid input: {algorithm} is not one of the offered algorithms.')
-        
+    
     def display(self, assignment: dict):
-        """Displays a KenKen puzzle.
-        
-        Parameters:
-            assignment: A dictionary mapping cells to their assigned values,
-                returned by csp.backtracking_search()
-        """
+        """Displays a KenKen puzzle."""
         print('+' + '-' * (self.size * 4 - 1) + '+')
         for cell in self.variables:
             try:
@@ -218,10 +191,10 @@ class KenKen(csp.CSP):
     
 def parse_input() -> tuple:
     """Reads a KenKen puzzle from a file and returns its size, grid, and chosen algorithm.
-    
     The first command line argument should be the name of the file containing the puzzle, without the '.txt' extension
     and the second argument should be the desired algorithm to use. The file should be placed in the 'test_cases/' folder
-    and have a '.txt' extension. For example, for a file called "5x5.txt" and algorithm=MAC: python solve.py 5x5 MAC
+    and have a '.txt' extension. For example, for a file called '5x5.txt' and algorithm=MAC, the command would be:
+    python solve.py 5x5 MAC
     """
     if len(sys.argv) != 3:
         raise ValueError('Invalid input, proper format is: python solve.py <file name> <algorithm>')
