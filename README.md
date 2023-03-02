@@ -23,7 +23,7 @@ The input puzzle files should be formatted as follows:
     ...
     [(row,col),(row,col)]<operation><target number>
 ```
-For instance, the puzzle size is 4 for a 4x4 puzzle. Each following line represents the cages with their members' coordinates in (row,col) format, starting from (1,1) to (N, N). You can find full examples in the [`test_cases/`](https://github.com/giorgossofronas/kenken/tree/main/test_cases) folder, in which there are plenty of **hard** KenKen puzzles from [kenkenpuzzle.com](http://www.kenkenpuzzle.com/).
+For instance, the puzzle size is 4 for a 4x4 puzzle. Each following line represents the cages with their members' coordinates in (row,col) format, starting from (1,1) to (N, N). You can find full examples in the [`test_cases/`](https://github.com/giorgossofronas/KenKen/tree/main/test_cases) folder, in which there are plenty of **hard** KenKen puzzles from [kenkenpuzzle.com](http://www.kenkenpuzzle.com/).
 <br><br>
 To run the solver, select or place a new puzzle-file in the `test_cases/` folder and make sure that it has a `.txt` extension. After that, simply execute the command:
 ```bash
